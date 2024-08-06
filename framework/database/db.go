@@ -3,9 +3,9 @@ package database
 import (
 	"log"
 
+	"github.com/luisbilecki/fc-encoder-video-golang/domain"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
-	_ "gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -49,6 +49,7 @@ func (d *Database) Connect() (*gorm.DB, error) {
 		return nil, err
 	}
 	if d.AutoMigrateDb {
+		d.Db.AutoMigrate(&domain.Video{}, &domain.Job{})
 	}
 
 	return d.Db, nil
