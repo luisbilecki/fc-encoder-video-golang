@@ -80,8 +80,7 @@ func (j *JobService) performUpload() error {
 
 	go videoUpload.ProcessUpload(concurrency, doneUpload)
 
-	var uploadResult string
-	uploadResult = <-doneUpload
+	var uploadResult = <-doneUpload
 
 	if uploadResult != "upload completed" {
 		return j.failJob(errors.New(uploadResult))
