@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	bucketName = "fc-video-enconder-example"
+	bucketName = "fc-video-encoder-exampl"
 )
 
 func init() {

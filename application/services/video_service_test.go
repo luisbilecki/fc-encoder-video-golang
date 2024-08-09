@@ -42,7 +42,7 @@ func TestVideoServiceDownload(t *testing.T) {
 	videoService.Video = video
 	videoService.VideoRepository = repo
 
-	err := videoService.Download("fc-video-enconder-example")
+	err := videoService.Download("fc-video-encoder-example")
 	require.Nil(t, err)
 
 	err = videoService.Fragment()
