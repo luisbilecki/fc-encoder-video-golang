@@ -1,15 +1,16 @@
 FROM golang:1.22.5-alpine3.20
 ENV PATH="$PATH:/bin/bash" \
-    BENTO4_BIN="/opt/bento4/bin" \
+    BENTO4_BIN="/opt/bento4/bin" \    
+    PATH="$PATH:/opt/bento4/utils" \
     PATH="$PATH:/opt/bento4/bin"
 
-# FFMPEG
-RUN apk add --update ffmpeg bash make
+# Install Bento 4 on Alpine
+RUN apk update && apk add bento4
 
 # Install Needed Dependencies
-RUN apk add --update --no-cache curl py-pip g++ gcc cmake unzip curl
+RUN apk add --update --no-cache ffmpeg bash make curl py-pip g++ gcc cmake unzip curl
 
-# Install Bento
+# Install Bento4 From Source
 WORKDIR /tmp/bento4
 
 ENV BENTO4_BASE_URL="https://www.bok.net/Bento4/source/" \
